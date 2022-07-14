@@ -1,6 +1,4 @@
 const Services = require("../services");
-const multer = require("multer");
-const path = require("path");
 const Joi = require("joi");
 const Helper = require("../Helper/validation.js");
 

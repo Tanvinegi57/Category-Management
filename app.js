@@ -1,19 +1,22 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 var cors = require("cors");
+
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDocs = require("./swagger.json");
+
 const app = express();
 
+app.use("/swagger-docs", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs));
+
 app.use(cors());
+app.use(express.json());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 const dotenv = require("dotenv");
 dotenv.config();
 const port = 3002;
-
-const swaggerUI = require("swagger-ui-express");
-const swaggerJsDocs = require("./swagger.json");
-app.use("/swagger-docs", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs));
 
 require("./dbConnection").connect();
 

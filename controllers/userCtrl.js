@@ -1,7 +1,6 @@
 const Services = require("../services");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const transporter = require("../config/emailConfig.js");
 const Joi = require("joi");
 const Helper = require("../Helper/validation.js");
 

@@ -6,7 +6,7 @@ const router = express.Router();
 //user routes
 router.post("/addUser", async (req, res) => {
   let data = await Ctrl.users.addUser(req.body);
-  res.json(data);
+  res.send(data);
 });
 router.post("/login", async (req, res) => {
   let data = await Ctrl.users.login(req.body);
@@ -27,7 +27,7 @@ router.get("/getCategoryByName/:name", async (req, res) => {
 });
 
 router.use(auth);
-
+// ----------------- add categories ---------------
 router.post("/addCategory", auth, async (req, res) => {
   let data = await Ctrl.categories.addCategory(req.body, req, res);
   res.send(data);
@@ -43,6 +43,7 @@ router.post(
   }
 );
 
+//----------------- Edit Categories ------------------------
 router.delete("/deleteCategory", auth, async (req, res) => {
   let deleteData = await Ctrl.categories.deleteCategory(req, res);
   res.send(deleteData);
